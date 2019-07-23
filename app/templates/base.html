@@ -1,0 +1,84 @@
+{% extends 'bootstrap/base.html' %}
+<!-- TODO: finish template for other pages -->
+{% block head %}
+      {{ title }}
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+
+<!--TODO: set the active class to 'on' if on page -->
+{% block nav %}
+<header>
+<div class="row">
+  <div class="col-md-12 no-padding">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark add-color">
+<a class="navbar-brand" href="index.html">Home</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav">
+  <li class="nav-item active">
+    <a class="nav-link" href="templates/about-me.html">About me<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="templates/blog.html">Photos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Follow Me</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="{{ url_for('blog') }}">blog</a>
+  </li>
+</ul>
+</div>
+</nav>
+  </div>  <!-- end col 12 -->
+</div>   <!-- end row -->
+</header>
+{% endblock %}
+
+
+  {% block belownav %}
+  <div class="row">
+    <div class="col-md-10 offset-md-2 offset-sm-4 offset-2 below-nav">
+        <p><a href="#"> Home</a></p>
+    </div> <!-- col 12 -->
+  </div> <!-- end row -->
+  {% endblock %}
+
+  <main>
+  {% block content %}
+
+  {% endblock %}
+  </main>
+
+
+
+{% block footer %}
+<footer>
+<div class="row add-background">
+  <div id="bookmark" class="col-md-10 offset-md-1 offset-sm-2 offset-1 below-footer1">
+            <ul>
+                <li><a href="#" class="fa fa-facebook"></a></li>
+                <li><a href="#" class="fa fa-linkedin"></a></li>
+                <li><a href="#" class="fa fa-google"></a></li>
+                <li><a href="#" class="fa fa-github"></a></li>
+            </ul>
+
+                <i>
+                    <a href="#" class="fa fa-angle-up"></a>
+                </i>
+</div
+</div> <!-- end row -->
+</footer>
+{% endblock %}
