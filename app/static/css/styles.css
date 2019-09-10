@@ -16,6 +16,21 @@ body {
 .no-padding {
   background-color: rgba(66, 66, 66, 1)
 }
+.navbar-brand:hover {
+  color: rgb(0, 183, 255)!important;
+}
+.nav-link:hover {
+  color: rgb(0, 183, 255)!important;
+}
+.nav-link {
+  color: rgb(0, 183, 255); 
+}
+.navbar-dark .navbar-brand {
+  color: rgb(0, 183, 255)!important;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+  color: rgb(0, 183, 255)!important;
+}
 /* Styling section below the nav bar */
 .below-nav {
 
@@ -46,6 +61,33 @@ body {
     font-size: 15px;
     color: rgb(104, 104, 104);
 }
+
+
+/* Styles for transparent box */
+
+.box {
+ text-align: center;
+ background: rgba(0, 0, 0, 0.9);
+ opacity: 0.5;
+ width:  450px;
+ height: 550px;
+ padding: 40px;
+ color: white;
+  margin-bottom: 100px;
+}
+
+.box-image {
+ border-radius: 50%;
+ width: 200px;
+ height: 200px;
+ border-radius: 50%;
+ opacity: 2.0;
+}
+.auto-margin {
+  margin: auto;
+
+}
+
 /* The main content container */
 .main-column-one {
 
@@ -79,8 +121,9 @@ body {
     position: relative;
     text-align: center;
     color: white;
-    background-color: rgb(60, 60, 60);
+    background-color: rgba(60,60,60,1);
 }
+
 .add-padding {
   padding-left: 10px;
   padding-right: 0px;

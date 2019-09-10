@@ -1,9 +1,5 @@
 {% extends 'bootstrap/base.html' %}
 <!-- TODO: finish template for other pages -->
-{% block head %}
-      {{ title }}
-{% endblock %}
-
 {% block styles %}
   {{ super() }}
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -16,29 +12,51 @@
 {% endblock %}
 
 <!--TODO: set the active class to 'on' if on page -->
-{% block nav %}
+{% block navbar %}
 <header>
 <div class="row">
   <div class="col-md-12 no-padding">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark add-color">
-<a class="navbar-brand" href="index.html">Home</a>
+<a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav">
+
+  {% if title == 'About Me'%}
   <li class="nav-item active">
-    <a class="nav-link" href="templates/about-me.html">About me<span class="sr-only">(current)</span></a>
-  </li>
+  {% else %}
   <li class="nav-item">
-    <a class="nav-link" href="templates/blog.html">Photos</a>
+  {% endif %}
+    <a class="nav-link" href="{{ url_for('about_me') }}">About me<span class="sr-only">(current)</span></a>
   </li>
+
+
+  {% if title == 'Projects'%}
+  <li class="nav-item active">
+  {% else %}
   <li class="nav-item">
-    <a class="nav-link" href="#">Follow Me</a>
+  {% endif %}
+    <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
   </li>
+
+  {% if title == 'Follow Me'%}
+  <li class="nav-item active">
+  {% else %}
   <li class="nav-item">
-    <a class="nav-link disabled" href="{{ url_for('blog') }}">blog</a>
+  {% endif %}
+    <a class="nav-link" href="{{ url_for('follow_me') }}">Follow Me</a>
   </li>
+
+  {% if title == 'Contact'%}
+  <li class="nav-item active">
+  {% else %}
+  <li class="nav-item">
+  {% endif %}
+    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+  </li>
+
 </ul>
 </div>
 </nav>
@@ -48,31 +66,31 @@
 {% endblock %}
 
 
-  {% block belownav %}
+  {% block content %}
   <div class="row">
     <div class="col-md-10 offset-md-2 offset-sm-4 offset-2 below-nav">
-        <p><a href="#"> Home</a></p>
+        <p><a href="#"> {{ title }}</a></p>
     </div> <!-- col 12 -->
   </div> <!-- end row -->
-  {% endblock %}
+
 
   <main>
-  {% block content %}
 
-  {% endblock %}
+    {% block app_content %} {% endblock %}
+
   </main>
 
 
 
-{% block footer %}
+
 <footer>
 <div class="row add-background">
-  <div id="bookmark" class="col-md-10 offset-md-1 offset-sm-2 offset-1 below-footer1">
+  <div id="bookmark" class="col-md-10 col-8 col-sm-8 offset-md-1 offset-sm-2 offset-1 below-footer1">
             <ul>
-                <li><a href="#" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-linkedin"></a></li>
-                <li><a href="#" class="fa fa-google"></a></li>
-                <li><a href="#" class="fa fa-github"></a></li>
+                <li><a href="https://www.facebook.com/jonathan.morfin.5" target="_blank" class="fa fa-facebook"></a></li>
+                <li><a href="https://www.linkedin.com/in/jonathanmorfin411/" target="_blank" class="fa fa-linkedin"></a></li>
+                <li><a href="https://aboutme.google.com" target="_blank" class="fa fa-google"></a></li>
+                <li><a href="https://github.com/jmorfin23" target="_blank" class="fa fa-github"></a></li>
             </ul>
 
                 <i>
