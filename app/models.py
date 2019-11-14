@@ -1,4 +1,5 @@
-from app import app, db
+from app import app, db, admin
+from flask_admin.contrib.sqla import ModelView
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,3 +12,6 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+admin.add_view(ModelView(User, db.session))
