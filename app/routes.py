@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, url_for, redirect, flash
 from flask import request, jsonify
-from app.mail import sendMail
+from app.mail import sendThemMail, sendMeMail
 
 @app.route('/')
 def index():
@@ -24,6 +24,8 @@ def email():
     print('***************')
     print('***************')
 
-    sendMail(name=name, email=email, subject=subject, message=message)
+    sendThemMail(name=name, email=email, subject=subject, message=message)
+    
+    sendMeMail(name=name, email=email, subject=subject, message=message)
 
     return jsonify({ 'Success': 'Message was sent, thank you.'})
