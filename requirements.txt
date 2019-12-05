@@ -11,3 +11,8 @@ pytz==2013.7
 setuptools==18.5
 six==1.4.1
 zope.interface==4.1.1
+Flask==1.1.1
+Flask-Bootstrap4==4.0.2
+Flask-Cors==3.0.8
+Flask-Migrate==2.5.2
+Flask-SQLAlchemy==2.4.0
