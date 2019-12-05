@@ -25,7 +25,7 @@ def email():
     print('***************')
 
     sendThemMail(name=name, email=email, subject=subject, message=message)
-    
+
     sendMeMail(name=name, email=email, subject=subject, message=message)
 
     return jsonify({ 'Success': 'Message was sent, thank you.'})
