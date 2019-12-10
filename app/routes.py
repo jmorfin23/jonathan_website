@@ -10,22 +10,21 @@ def index():
 
 @app.route('/api/email')
 def email():
-    name = request.headers.get('name')
-    email = request.headers.get('email')
-    subject = request.headers.get('subject')
-    message = request.headers.get('message')
 
-    if not name or not email or not subject or not message:
-        return jsonify({ 'Error 001:': 'Invalid parameters'})
+    try:
+        name = request.headers.get('name')
+        email = request.headers.get('email')
+        subject = request.headers.get('subject')
+        message = request.headers.get('message')
 
-    print('***************')
-    print('***************')
-    print(name, email, subject, message)
-    print('***************')
-    print('***************')
+        if not name or not email or not subject or not message:
+            return jsonify({ 'Error': 'Please fill out the entire form.'})
 
-    sendThemMail(name=name, email=email, subject=subject, message=message)
+        sendThemMail(name=name, email=email, subject=subject, message=message)
 
-    sendMeMail(name=name, email=email, subject=subject, message=message)
+        sendMeMail(name=name, email=email, subject=subject, message=message)
 
-    return jsonify({ 'Success': 'Message was sent, thank you.'})
+        return jsonify({ 'Success': 'Message was sent, thank you.'})
+
+    except:
+        return jsonify({ 'Error': 'There was an error sending your message. Please try again.'})
