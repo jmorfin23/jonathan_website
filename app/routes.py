@@ -5,7 +5,7 @@ from app.mail import sendThemMail, sendMeMail
 
 @app.route('/')
 def index():
-    return 'This is a test.'
+    return 'This is a my portfolio backend.'
 
 
 @app.route('/api/email')
