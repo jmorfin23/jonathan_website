@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, url_for, redirect, flash
 from flask import request, jsonify
 from app.mail import sendThemMail, sendMeMail
+import json
 
 @app.route('/')
 def index():
@@ -11,20 +12,17 @@ def index():
 @app.route('/api/email')
 def email():
 
-    try:
-        name = request.headers.get('name')
-        email = request.headers.get('email')
-        subject = request.headers.get('subject')
-        message = request.headers.get('message')
+    #retrieve data
+    data = request.headers.get('data')
 
-        if not name or not email or not subject or not message:
-            return jsonify({ 'Error': 'Please fill out the entire form.'})
+    #convert to a python dict
+    mydata = json.loads(data)
 
-        sendThemMail(name=name, email=email, subject=subject, message=message)
+    if not mydata['name'] or not mydata['email'] or not mydata['subject'] or not mydata['message']:
+        return jsonify({ 'Error': 'Please fill out the entire form.'})
 
-        sendMeMail(name=name, email=email, subject=subject, message=message)
+    sendThemMail(name=mydata['name'], email=mydata['email'], subject=mydata['subject'], message=mydata['message'])
 
-        return jsonify({ 'Success': 'Message was sent, thank you.'})
+    sendMeMail(name=mydata['name'], email=mydata['email'], subject=mydata['subject'], message=mydata['message'])
 
-    except:
-        return jsonify({ 'Error': 'There was an error sending your message. Please try again.'})
+    return jsonify({ 'Success': 'Message was sent, thank you.'})
